@@ -14,7 +14,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    saveUser: (state, action: PayloadAction<User[]>) => {
+    saveUser: (_state, action: PayloadAction<User[]>) => {
       localStorage.setItem("userData", JSON.stringify(action.payload));
       return action.payload;
     },
