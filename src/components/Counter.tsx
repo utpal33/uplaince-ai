@@ -5,7 +5,7 @@ import { Button, Box, Typography } from "@mui/material";
 const Counter: React.FC = () => {
   const [count, setCount] = useState(0);
 
-  // Spring animation for background color
+
   const backgroundSpring = useSpring({
     backgroundColor: `rgba(255, 0, 0, ${count * 0.1})`,
     config: { tension: 200, friction: 20 },

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Box, Typography, Snackbar } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveUser } from "../store/Store";
-import { RootState } from "../store/Store";
+// import { RootState } from "../store/Store";
 
 const UserForm: React.FC = () => {
   const dispatch = useDispatch();
-  const existingUsers = useSelector((state: RootState) => state.user); 
+  // const existingUsers = useSelector((state: RootState) => state.user); 
   const [userDetails, setUserDetails] = useState({
     id: "",
     fullName: "",
@@ -42,7 +42,7 @@ const UserForm: React.FC = () => {
 
     const storedUsers = JSON.parse(localStorage.getItem("userList") || "[]");
 
-    // Check if the user already exists
+    // check exsisting users
     if (storedUsers.some((user: any) => user.emailAddress === userDetails.emailAddress)) {
       setNotificationMessage("This email is already registered!");
       setShowNotification(true);
@@ -58,7 +58,6 @@ const UserForm: React.FC = () => {
     setNotificationMessage("User added successfully!");
     setShowNotification(true);
 
-    // Clear form fields after submission
     setUserDetails({ id: "", fullName: "", homeAddress: "", emailAddress: "", phoneNumber: "" });
     setHasUnsavedChanges(false);
   };
@@ -86,7 +85,7 @@ const UserForm: React.FC = () => {
         </Button>
       </form>
 
-      {/* Snackbar Notification */}
+      {/* showing notification */}
       <Snackbar
         open={showNotification}
         autoHideDuration={3000}
